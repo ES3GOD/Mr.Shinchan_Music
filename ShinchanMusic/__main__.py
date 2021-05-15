@@ -1,9 +1,14 @@
+import requests
 from pyrogram import Client as Bot
 
-from ShinchanMusic.config import API_HASH, API_ID, BOT_TOKEN
+from ShinchanMusic.config import API_HASH, API_ID, BG_IMAGE, BOT_TOKEN
 from ShinchanMusic.services.callsmusic import run
 
-# os.system(f"wget -O ./etc/foreground.png {BG_IMAGE}")
+response = requests.get(BG_IMAGE)
+file = open("./etc/foreground.png", "wb")
+file.write(response.content)
+file.close()
+
 bot = Bot(
     ":memory:",
     API_ID,
