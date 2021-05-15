@@ -19,6 +19,8 @@ from Python_ARQ import ARQ
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 
+from ShinchanMusic.modules.play import arq
+
 
 @Client.on_message(filters.command("song") & ~filters.channel)
 def song(client, message):
@@ -80,10 +82,6 @@ def song(client, message):
         os.remove(thumb_name)
     except Exception as e:
         print(e)
-
-
-ARQ_API = "http://35.240.133.234:8000"
-arq = ARQ(ARQ_API)
 
 
 def get_text(message: Message) -> [None, str]:
