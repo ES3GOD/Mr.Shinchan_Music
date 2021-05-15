@@ -2,7 +2,6 @@ from asyncio.queues import QueueEmpty
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
-
 from ShinchanMusic.function.admins import set
 from ShinchanMusic.helpers.channelmusic import get_chat_id
 from ShinchanMusic.helpers.decorators import authorized_users_only, errors
