@@ -11,13 +11,13 @@ SESSION_NAME = getenv("SESSION_NAME", "session")
 BOT_TOKEN = getenv("BOT_TOKEN")
 BOT_NAME = getenv("BOT_NAME")
 UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "@Shinchan_Updates")
-BG_IMAGE = getenv("BG_IMAGE", "https://telegra.ph/file/56e5d3922d423cfb23871.jpg")
+BG_IMAGE = getenv("BG_IMAGE", "https://telegra.ph/file/544da923c008df67f98f4.png")
 admins = {}
 API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
 
-DURATION_LIMIT = int(getenv("DURATION_LIMIT", "10"))
-
+DURATION_LIMIT = int(getenv("DURATION_LIMIT", "7"))
+ARQ_API_KEY = getenv("ARQ_API_KEY", "VKSSQH-SRNJYZ-MSOJAI-QALESR-ARQ")
 COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ !").split())
 
 SUDO_USERS = list(map(int, getenv("SUDO_USERS").split()))
