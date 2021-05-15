@@ -83,9 +83,7 @@ def song(client, message):
 
 
 ARQ_API = "http://35.240.133.234:8000"
-API_KEY = "NVKPAQ-ACGKVT-ZAWXRB-VFJEAR-ARQ"
 arq = ARQ(ARQ_API)
-arq = ARQ(API_KEY)
 
 
 def get_text(message: Message) -> [None, str]:
