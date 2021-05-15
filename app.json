@@ -1,9 +1,9 @@
 {
-  "name": "Music Bot",
+  "name": "ShinchanMusic",
   "logo": "https://telegra.ph/file/9a0f259127fe5ed6b2a27.jpg",
   "description": "Open-Source bot to play songs in your Telegram's Group Voice Chat. Powered by PyTgCalls.",
   "keywords": ["music", "voicechat", "telegram"],
-  "repository": "https://github.com/rihan2575/Mr.Shinchan_Music",
+  "repository": "https://github.com/rihan2575/ShinchanMusic",
   "stack": "container",
   "env": {
     "SESSION_NAME": {
@@ -19,6 +19,21 @@
       "required": false,
       "value": ""
     },
+    "ARQ_API_KEY": {
+      "description": "Get from @ARQRobot.",
+      "required": false,
+      "value": ""
+    },    
+    "BG_IMAGE": {
+      "description": "BG image of bot (Use transparent one)[IGNORE].",
+      "required": false,
+      "value": "https://telegra.ph/file/544da923c008df67f98f4.png"
+    },     
+    "UPDATES_CHANNEL": {
+      "description": "Updates Channel [IGNORE].",
+      "required": false,
+      "value": ""
+    },    
     "API_ID": {
       "description": "App ID from my.telegram.org/apps",
       "required": true
