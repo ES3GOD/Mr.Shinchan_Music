@@ -14,6 +14,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from Python_ARQ import ARQ
 from youtube_search import YoutubeSearch
 
+from ShinchanMusic.config import ARQ_API_KEY
 from ShinchanMusic.config import BOT_NAME as bn
 from ShinchanMusic.config import UPDATES_CHANNEL as updateschannel
 from ShinchanMusic.config import que
@@ -22,12 +23,14 @@ from ShinchanMusic.helpers.admins import get_administrators
 from ShinchanMusic.helpers.channelmusic import get_chat_id
 from ShinchanMusic.helpers.decorators import authorized_users_only
 from ShinchanMusic.helpers.filters import command, other_filters
+from ShinchanMusic.helpers.gets import get_file_name
 from ShinchanMusic.services.callsmusic import callsmusic, queues
 from ShinchanMusic.services.callsmusic.callsmusic import client as USER
 from ShinchanMusic.services.converter.converter import convert
 from ShinchanMusic.services.downloaders import youtube
 
 chat_id = None
+arq = ARQ("https://thearq.tech", ARQ_API_KEY)
 
 
 def cb_admin_check(func: Callable) -> Callable:
