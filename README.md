@@ -19,13 +19,15 @@
 - Settings panel
 - Control with buttons
 - Userbot auto join
-- Cahnnel Music Play
+- Channel Music Play
 
 
-### Commands 🛠
+### Commands For Group 🛠
+
 #### For all in group
 
 - `/play <song name>` - play song you requested
+- `/play <reply to audio>` - play replied file
 - `/dplay <song name>` - play song you requested via deezer
 - `/splay <song name>` - play song you requested via jio saavn
 - `/playlist` - Show now playing list
@@ -46,8 +48,25 @@
 - `/userbotleave` - remove assistant from your chat
 - `/admincache` - Refresh admin list
 
-#### Channel Music Play.
-You can set Channel Music Play like this:
+### Commands For Channel Music Play 🛠
+
+#### For Linked Groups Admins Only
+
+- `/cplay <song name>` - play song you requested
+- `/cplay <reply to audio>` - play replied file
+- `/cdplay <song name>` - play song you requested via deezer
+- `/csplay <song name>` - play song you requested via jio saavn
+- `/cplaylist` - Show now playing list
+- `/ccurrent` - Show now playing
+- `/csong <song name>` - download songs you want quickly
+- `/csearch <query>` - search videos on youtube with details
+- `/cdeezer <song name>` - download songs you want quickly via deezer
+- `/csaavn <song name>` - download songs you want quickly via saavn
+- `/cvideo <song name>` - download videos you want quickly
+- Channel is also can be used instead of c
+
+#### If You Don't Like To Play In Linked Channel.
+ 
  1. Get your channel ID.
  2. Rename your group to: Channel Music: your_channel_id
  3. Add @ShinchanHelper_Bot as Channel admin with full perms
@@ -65,7 +84,7 @@ You can set Channel Music Play like this:
 
 ### Credits
 #### Special Credits
-- [Rojserbest](http://github.com/rojserbes): Callsmusic Developer
+- [Rojserbest](http://github.com/rojserbest): Callsmusic Developer
 
 This bot is based on the original work done by [Rojserbest](http://github.com/rojserbest). Without his hardwork ShinchanMusic won't exist. 
 ShinchanMusic is a modified version of [Callsmusic](https://github.com/callsmusic/callsmusic) for fit the needs of @ShinchanHelper_Bot users
