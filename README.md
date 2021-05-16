@@ -57,13 +57,14 @@
 - `/cdplay <song name>` - play song you requested via deezer
 - `/csplay <song name>` - play song you requested via jio saavn
 - `/cplaylist` - Show now playing list
-- `/ccurrent` - Show now playing
-- `/csong <song name>` - download songs you want quickly
-- `/csearch <query>` - search videos on youtube with details
-- `/cdeezer <song name>` - download songs you want quickly via deezer
-- `/csaavn <song name>` - download songs you want quickly via saavn
-- `/cvideo <song name>` - download videos you want quickly
-- Channel is also can be used instead of c
+- `/cccurrent` - Show now playing
+- `/cplayer` - open music player settings panel
+- `/cpause` - pause song play
+- `/cresume` - resume song play
+- `/cskip` - play next song
+- `/cend` - stop music play
+- `/userbotjoinchannel` - invite assistant to your chat
+*Channel is also can be used instead of c
 
 #### If You Don't Like To Play In Linked Channel.
  
