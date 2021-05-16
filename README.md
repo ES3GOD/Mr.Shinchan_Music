@@ -64,7 +64,7 @@
 - `/cskip` - play next song
 - `/cend` - stop music play
 - `/userbotjoinchannel` - invite assistant to your chat
-*Channel is also can be used instead of c
+* Channel is also can be used instead of c
 
 #### If You Don't Like To Play In Linked Channel.
  
