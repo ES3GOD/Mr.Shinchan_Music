@@ -1,7 +1,7 @@
 <h1 align="centre">SHINCHAN MUSIC 🎵</h1>
 
 ### A bot that can play music on telegram group's voice call
-#### BASED ON [CALLSMUSIC](https://github.com/callsmusic/callsmusic)
+#### BASED ON [PYTGCALLS](https://github.com/pytgcalls/pytgcalls)
 # Available on telegram as @ShinchanHelper_Bot
 
 <p align="center">
