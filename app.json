@@ -3,7 +3,7 @@
   "logo": "https://telegra.ph/file/9a0f259127fe5ed6b2a27.jpg",
   "description": "Open-Source bot to play songs in your Telegram's Group Voice Chat. Powered by PyTgCalls.",
   "keywords": ["music", "voicechat", "telegram"],
-  "repository": "https://github.com/rihan2575/ShinchanMusic",
+  "repository": "https://github.com/rihan2575/Mr.Shinchan_Music",
   "stack": "container",
   "env": {
     "SESSION_NAME": {
@@ -14,10 +14,28 @@
       "description": "A bot token from @BotFather",
       "required": true
     },
+    "BOT_USERNAME": {
+      "description": "Your bot's username without @",
+      "required": true
+    },
     "BOT_NAME": {
       "description": "Your MusicPlayer Bot Name.",
       "required": false,
       "value": ""
+    },
+    "SUPPORT_GROUP": {
+      "description": "Your MusicPlayer support group without @ [Leave this if you don't have one]",
+      "required": false,
+      "value": "Shinchan_Support"
+    },
+    "PROJECT_NAME": {
+      "description": "Your MusicPlayer project Name.",
+      "required": false,
+      "value": "ShinchanMusic"
+    },
+    "ASSISTANT_NAME": {
+      "description": "Your MusicPlayer's assistant Username without @.",
+      "required": true
     },
     "ARQ_API_KEY": {
       "description": "Get from @ARQRobot.",
@@ -25,14 +43,14 @@
       "value": ""
     },    
     "BG_IMAGE": {
-      "description": "BG image of bot (Use transparent one)[IGNORE].",
+      "description": "BG image of bot (Use transparent one) [IGNORE].",
       "required": false,
-      "value": "https://telegra.ph/file/544da923c008df67f98f4.png"
+      "value": " https://telegra.ph/file/544da923c008df67f98f4.png"
     },     
     "UPDATES_CHANNEL": {
-      "description": "Updates Channel [IGNORE].",
+      "description": "Updates Channel without @ [Leave this if you don't have one].",
       "required": false,
-      "value": ""
+      "value": "DaisyXupdates"
     },    
     "API_ID": {
       "description": "App ID from my.telegram.org/apps",
