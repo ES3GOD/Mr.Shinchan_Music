@@ -613,11 +613,11 @@ async def deezer(client: Client, message_: Message):
         ]
     )
     file_path = await convert(wget.download(url))
-    await res.edit("Generating Thumbnail")
+    await arq.edit("Generating Thumbnail")
     await generate_cover(requested_by, title, artist, duration, thumbnail)
     chat_id = chid
     if chat_id in callsmusic.pytgcalls.active_calls:
-        await res.edit("adding in queue")
+        await arq.edit("adding in queue")
         position = await queues.put(chat_id, file=file_path)
         qeue = que.get(chat_id)
         s_name = title
@@ -654,7 +654,7 @@ async def deezer(client: Client, message_: Message):
 @authorized_users_only
 async def jiosaavn(client: Client, message_: Message):
     global que
-    lel = await message_.reply("🔄 **Processing**")
+    arq = await message_.reply("🔄 **Processing**")
     try:
       conchat = await client.get_chat(message_.chat.id)
       conid = conchat.linked_chat.id
@@ -702,7 +702,7 @@ async def jiosaavn(client: Client, message_: Message):
                     pass
                 except Exception:
                     # print(e)
-                    await lel.edit(
+                    await arq.edit(
                         f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your channel due to heavy requests for userbot! Make sure user is not banned in group."
                         "\n\nOr manually add @ShinchanHelper_Bot to your Group and try again</b>",
                     )
