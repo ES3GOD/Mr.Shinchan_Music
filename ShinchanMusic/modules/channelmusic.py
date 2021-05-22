@@ -583,7 +583,7 @@ async def deezer(client: Client, message_: Message):
         await USER.get_chat(chid)
         # lmoa = await client.get_chat_member(chid,wew)
     except:
-        await lel.edit(
+        await arq.edit(
             f"<i> {user.first_name} Userbot not in this channel, Ask admin to send /play command for first time or add {user.first_name} manually</i>"
         )
         return
@@ -593,6 +593,7 @@ async def deezer(client: Client, message_: Message):
     queryy = text[1]
     await arq.edit(f"Searching 👀👀👀 for `{queryy}` on deezer")
     try:
+        arq = ARQ("https://thearq.tech", ARQ_API_KEY)
         r = await arq.deezer(query=queryy, limit=1)
         title = r[0]["title"]
         duration = int(r[0]["duration"])
@@ -720,6 +721,7 @@ async def jiosaavn(client: Client, message_: Message):
     query = text[1]
     await arq.edit(f"Searching 👀👀👀 for `{query}` on jio saavn")
     try:
+        arq = ARQ("https://thearq.tech", ARQ_API_KEY)
         r = await arq.saavn(query=queryy, limit=1)
         sname = r[0]["song"]
         slink = r[0]["media_url"]
