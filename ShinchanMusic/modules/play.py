@@ -717,14 +717,14 @@ async def jiosaavn(client: Client, message_: Message):
         for administrator in administrators:
             if administrator == message_.from_user.id:
                 if message_.chat.title.startswith("Channel Music: "):
-                    await lel.edit(
+                    await arq.edit(
                         "<b>Remember to add helper to your channel</b>",
                     )
                     pass
                 try:
                     invitelink = await client.export_chat_invite_link(chid)
                 except:
-                    await lel.edit(
+                    await arq.edit(
                         "<b>Add me as admin of yor group first</b>",
                     )
                     return
@@ -734,7 +734,7 @@ async def jiosaavn(client: Client, message_: Message):
                     await USER.send_message(
                         message_.chat.id, "I joined this group for playing music in VC"
                     )
-                    await lel.edit(
+                    await arq.edit(
                         "<b>helper userbot joined your chat</b>",
                     )
 
@@ -742,7 +742,7 @@ async def jiosaavn(client: Client, message_: Message):
                     pass
                 except Exception:
                     # print(e)
-                    await lel.edit(
+                    await arq.edit(
                         f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
                         "\n\nOr manually add @Shinchan_Helper to your Group and try again</b>",
                     )
@@ -767,7 +767,7 @@ async def jiosaavn(client: Client, message_: Message):
         sthumb = r[0]["image"]
         sduration = int(r[0]["duration"])
     except Exception as e:
-        await res.edit("Found Literally Nothing!, You Should Work On Your English.")
+        await arq.edit("Found Literally Nothing!, You Should Work On Your English.")
         print(str(e))
         return
     keyboard = InlineKeyboardMarkup(
