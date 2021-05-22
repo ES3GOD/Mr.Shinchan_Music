@@ -526,7 +526,7 @@ async def play(_, message: Message):
 @authorized_users_only
 async def deezer(client: Client, message_: Message):
     global que
-    lel = await message_.reply("🔄 **Processing**")
+    arq = ARQ("https://thearq.tech", ARQ_API_KEY)
 
     try:
       conchat = await client.get_chat(message_.chat.id)
@@ -567,7 +567,7 @@ async def deezer(client: Client, message_: Message):
 
                 try:
                     await USER.join_chat(invitelink)
-                    await lel.edit(
+                    await arq.edit(
                         "<b>helper userbot joined your channel</b>",
                     )
 
@@ -593,7 +593,6 @@ async def deezer(client: Client, message_: Message):
     queryy = text[1]
     await arq.edit(f"Searching 👀👀👀 for `{queryy}` on deezer")
     try:
-        arq = ARQ("https://thearq.tech", ARQ_API_KEY)
         r = await arq.deezer(query=queryy, limit=1)
         title = r[0]["title"]
         duration = int(r[0]["duration"])
@@ -639,7 +638,7 @@ async def deezer(client: Client, message_: Message):
         qeue.append(appendable)
         callsmusic.pytgcalls.join_group_call(chat_id, file_path)
 
-    await res.delete()
+    await arq.delete()
 
     m = await client.send_photo(
         chat_id=message_.chat.id,
@@ -655,7 +654,7 @@ async def deezer(client: Client, message_: Message):
 @authorized_users_only
 async def jiosaavn(client: Client, message_: Message):
     global que
-    arq = await message_.reply("🔄 **Processing**")
+    arq = ARQ("https://thearq.tech", ARQ_API_KEY)
     try:
       conchat = await client.get_chat(message_.chat.id)
       conid = conchat.linked_chat.id
@@ -721,7 +720,6 @@ async def jiosaavn(client: Client, message_: Message):
     query = text[1]
     await arq.edit(f"Searching 👀👀👀 for `{query}` on jio saavn")
     try:
-        arq = ARQ("https://thearq.tech", ARQ_API_KEY)
         r = await arq.saavn(query=queryy, limit=1)
         sname = r[0]["song"]
         slink = r[0]["media_url"]
