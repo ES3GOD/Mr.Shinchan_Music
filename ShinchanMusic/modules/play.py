@@ -1,22 +1,6 @@
-# Daisyxmusic (Telegram bot project)
-# Copyright (C) 2021  Inukaasith
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
 import json
 import os
+from os import path
 from typing import Callable
 
 import aiofiles
@@ -26,6 +10,7 @@ import requests
 import wget
 from PIL import Image, ImageDraw, ImageFont
 from pyrogram import Client, filters
+from pyrogram.types import Voice
 from pyrogram.errors import UserAlreadyParticipant
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from Python_ARQ import ARQ
@@ -39,6 +24,8 @@ from ShinchanMusic.config import que
 from ShinchanMusic.function.admins import admins as a
 from ShinchanMusic.helpers.admins import get_administrators
 from ShinchanMusic.helpers.channelmusic import get_chat_id
+from ShinchanMusic.helpers.errors import DurationLimitError
+from ShinchanMusic.helpers.decorators import errors
 from ShinchanMusic.helpers.decorators import authorized_users_only
 from ShinchanMusic.helpers.filters import command, other_filters
 from ShinchanMusic.helpers.gets import get_file_name
@@ -153,7 +140,7 @@ async def playlist(client, message):
     await message.reply_text(msg)
 
 
-###Setting-------------------------------------------------------------------
+# ============================= Settings =========================================
 
 
 def updated_stats(chat, queue, vol=100):
@@ -394,7 +381,7 @@ async def m_cb(b, cb):
         else:
             await cb.answer("Chat is not connected!", show_alert=True)
 
-###Youtube----------------------------------------------------------
+#==========================Youtube=============================
 
 @Client.on_message(command("play") & other_filters)
 async def play(_, message: Message):
@@ -406,7 +393,7 @@ async def play(_, message: Message):
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "helper"
+        user.first_name = "ShinchanMusic"
     usar = user
     wew = usar.id
     try:
@@ -573,12 +560,12 @@ async def play(_, message: Message):
         os.remove("final.png")
         return await lel.delete()
 
-###Deezer--------------------------------------------------------------------------
+#===========================Deezer==============================================
 
 @Client.on_message(filters.command("dplay") & filters.group & ~filters.edited)
 async def deezer(client: Client, message_: Message):
     global que
-    arq = ARQ("https://thearq.tech", ARQ_API_KEY)
+    lel = await message_.reply("🔄 **Processing**")
     administrators = await get_administrators(message_.chat)
     chid = message_.chat.id
     try:
@@ -594,14 +581,14 @@ async def deezer(client: Client, message_: Message):
         for administrator in administrators:
             if administrator == message_.from_user.id:
                 if message_.chat.title.startswith("Channel Music: "):
-                    await arq.edit(
+                    await lel.edit(
                         "<b>Remember to add helper to your channel</b>",
                     )
                     pass
                 try:
                     invitelink = await client.export_chat_invite_link(chid)
                 except:
-                    await arq.edit(
+                    await lel.edit(
                         "<b>Add me as admin of yor group first</b>",
                     )
                     return
@@ -611,7 +598,7 @@ async def deezer(client: Client, message_: Message):
                     await USER.send_message(
                         message_.chat.id, "I joined this group for playing music in VC"
                     )
-                    await arq.edit(
+                    await lel.edit(
                         "<b>helper userbot joined your chat</b>",
                     )
 
@@ -627,7 +614,7 @@ async def deezer(client: Client, message_: Message):
         await USER.get_chat(chid)
         # lmoa = await client.get_chat_member(chid,wew)
     except:
-        await arq.edit(
+        await lel.edit(
             f"<i> {user.first_name} Userbot not in this chat, Ask admin to send /play command for first time or add {user.first_name} manually</i>"
         )
         return
@@ -635,16 +622,22 @@ async def deezer(client: Client, message_: Message):
 
     text = message_.text.split(" ", 1)
     queryy = text[1]
-    await arq.edit(f"Searching 👀👀👀 for `{queryy}` on deezer")
+    query = queryy
+    res = lel
+    await res.edit(f"Searching 👀👀👀 for `{queryy}` on deezer")
     try:
-        r = await arq.deezer(query=queryy, limit=1)
-        title = r[0]["title"]
-        duration = int(r[0]["duration"])
-        thumbnail = r[0]["thumbnail"]
-        artist = r[0]["artist"]
-        url = r[0]["url"]
+        songs = await arq.deezer(query,1)
+        if not songs.ok:
+            await message_.reply_text(songs.result)
+            return
+        title = songs.result[0].title
+        url = songs.result[0].url
+        artist = songs.result[0].artist
+        duration = songs.result[0].duration
+        thumbnail = songs.result[0].thumbnail
+
     except:
-        await arq.edit("Found Literally Nothing, You Should Work On Your English!")
+        await res.edit("Found Literally Nothing, You Should Work On Your English!")
         return
     keyboard = InlineKeyboardMarkup(
         [
@@ -669,9 +662,9 @@ async def deezer(client: Client, message_: Message):
         loc = file_path
         appendable = [s_name, r_by, loc]
         qeue.append(appendable)
-        await arq.edit_text(f"✯{bn}✯= #️⃣ Queued at position {position}")
+        await res.edit_text(f"✯{bn}✯= #️⃣ Queued at position {position}")
     else:
-        await arq.edit_text(f"✯{bn}✯=▶️ Playing.....")
+        await res.edit_text(f"✯{bn}✯=▶️ Playing.....")
 
         que[chat_id] = []
         qeue = que.get(chat_id)
@@ -686,7 +679,7 @@ async def deezer(client: Client, message_: Message):
             res.edit("Group call is not connected of I can't join it")
             return
 
-    await arq.delete()
+    await res.delete()
 
     m = await client.send_photo(
         chat_id=message_.chat.id,
@@ -696,12 +689,12 @@ async def deezer(client: Client, message_: Message):
     )
     os.remove("final.png")
 
-###Saavn----------------------------------------------------------------------------
+#===========================Saavn===============================================
 
 @Client.on_message(filters.command("splay") & filters.group & ~filters.edited)
 async def jiosaavn(client: Client, message_: Message):
     global que
-    arq = ARQ("https://thearq.tech", ARQ_API_KEY)
+    lel = await message_.reply("🔄 **Processing**")
     administrators = await get_administrators(message_.chat)
     chid = message_.chat.id
     try:
@@ -717,14 +710,14 @@ async def jiosaavn(client: Client, message_: Message):
         for administrator in administrators:
             if administrator == message_.from_user.id:
                 if message_.chat.title.startswith("Channel Music: "):
-                    await arq.edit(
+                    await lel.edit(
                         "<b>Remember to add helper to your channel</b>",
                     )
                     pass
                 try:
                     invitelink = await client.export_chat_invite_link(chid)
                 except:
-                    await arq.edit(
+                    await lel.edit(
                         "<b>Add me as admin of yor group first</b>",
                     )
                     return
@@ -734,7 +727,7 @@ async def jiosaavn(client: Client, message_: Message):
                     await USER.send_message(
                         message_.chat.id, "I joined this group for playing music in VC"
                     )
-                    await arq.edit(
+                    await lel.edit(
                         "<b>helper userbot joined your chat</b>",
                     )
 
@@ -742,15 +735,15 @@ async def jiosaavn(client: Client, message_: Message):
                     pass
                 except Exception:
                     # print(e)
-                    await arq.edit(
+                    await lel.edit(
                         f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
-                        "\n\nOr manually add @Shinchan_Helper to your Group and try again</b>",
+                        "\n\nOr manually add to your Group and try again</b>",
                     )
     try:
         await USER.get_chat(chid)
         # lmoa = await client.get_chat_member(chid,wew)
     except:
-        await arq.edit(
+        await lel.edit(
             "<i> helper Userbot not in this chat, Ask admin to send /play command for first time or add assistant manually</i>"
         )
         return
@@ -758,16 +751,20 @@ async def jiosaavn(client: Client, message_: Message):
     chat_id = message_.chat.id
     text = message_.text.split(" ", 1)
     query = text[1]
-    await arq.edit(f"Searching 👀👀👀 for `{query}` on jio saavn")
+    res = lel
+    await res.edit(f"Searching 👀👀👀 for `{query}` on jio saavn")
     try:
-        r = await arq.saavn(query=queryy, limit=1)
-        sname = r[0]["song"]
-        slink = r[0]["media_url"]
-        ssingers = r[0]["singers"]
-        sthumb = r[0]["image"]
-        sduration = int(r[0]["duration"])
+        songs = await arq.saavn(query)
+        if not songs.ok:
+            await message_.reply_text(songs.result)
+            return
+        sname = songs.result[0].song
+        slink = songs.result[0].media_url
+        ssingers = songs.result[0].singers
+        sthumb = songs.result[0].image
+        sduration = int(songs.result[0].duration)
     except Exception as e:
-        await arq.edit("Found Literally Nothing!, You Should Work On Your English.")
+        await res.edit("Found Literally Nothing!, You Should Work On Your English.")
         print(str(e))
         return
     keyboard = InlineKeyboardMarkup(
@@ -778,7 +775,7 @@ async def jiosaavn(client: Client, message_: Message):
             ],
             [
                 InlineKeyboardButton(
-                    text="Join Updates Channel", url=f"{updateschannel}"
+                    text="Join Updates Channel", url=f"https://t.me/{updateschannel}"
                 )
             ],
             [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
@@ -803,7 +800,7 @@ async def jiosaavn(client: Client, message_: Message):
         )
 
     else:
-        await arq.edit_text(f"{bn}=▶️ Playing.....")
+        await res.edit_text(f"{bn}=▶️ Playing.....")
         que[chat_id] = []
         qeue = que.get(chat_id)
         s_name = sname
@@ -814,11 +811,11 @@ async def jiosaavn(client: Client, message_: Message):
         try:
             callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         except:
-            arq.edit("Group call is not connected of I can't join it")
+            res.edit("Group call is not connected of I can't join it")
             return
-    await arq.edit("Generating Thumbnail.")
+    await res.edit("Generating Thumbnail.")
     await generate_cover(requested_by, sname, ssingers, sduration, sthumb)
-    await arq.delete()
+    await res.delete()
     m = await client.send_photo(
         chat_id=message_.chat.id,
         reply_markup=keyboard,
