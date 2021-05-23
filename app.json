@@ -50,7 +50,7 @@
     "UPDATES_CHANNEL": {
       "description": "Updates Channel without @ [Leave this if you don't have one].",
       "required": false,
-      "value": "DaisyXupdates"
+      "value": "Shinchan_Updates"
     },    
     "API_ID": {
       "description": "App ID from my.telegram.org/apps",
