@@ -1,4 +1,5 @@
 import json
+import asyncio
 import os
 from os import path
 from typing import Callable
@@ -473,6 +474,7 @@ async def play(_, message: Message):
                 "Song not found.Try another song or maybe spell it properly."
             )
             print(str(e))
+            playing = False
             return
 
         keyboard = InlineKeyboardMarkup(
@@ -522,6 +524,8 @@ async def play(_, message: Message):
             ),
         )
         os.remove("final.png")
+        await asyncio.sleep(int(time_to_seconds(duration)))
+        playing = False
         return await lel.delete()
 
 #=========================Deezer====================================
@@ -599,7 +603,7 @@ async def deezer(client: Client, message_: Message):
     res = lel
     await res.edit(f"Searching 👀👀👀 for `{queryy}` on deezer")
     try:
-        songs = await arq.deezer(query)
+        songs = await arq.deezer(query, 1)
         if not songs.ok:
             await message_.reply_text(songs.result)
             return
@@ -610,6 +614,7 @@ async def deezer(client: Client, message_: Message):
         thumbnail = songs.result[0].thumbnail
     except:
         await res.edit("Found Literally Nothing, You Should Work On Your English!")
+        playing = False
         return
     keyboard = InlineKeyboardMarkup(
         [
@@ -656,6 +661,9 @@ async def deezer(client: Client, message_: Message):
         caption=f"Playing [{title}]({url}) Via Deezer in Linked Channel",
     )
     os.remove("final.png")
+    await asyncio.sleep(int(songs[0]["duration"]))
+    await m.delete()
+    playing = False
 
 #=========================Saavn=============================
 
@@ -742,6 +750,7 @@ async def jiosaavn(client: Client, message_: Message):
     except Exception as e:
         await res.edit("Found Literally Nothing!, You Should Work On Your English.")
         print(str(e))
+        playing = False
         return
     keyboard = InlineKeyboardMarkup(
         [
@@ -795,6 +804,8 @@ async def jiosaavn(client: Client, message_: Message):
         caption=f"Playing {sname} Via Jiosaavn in linked channel",
     )
     os.remove("final.png")
-
+    await asyncio.sleep(int(sduration))
+    await m.delete()
+    playing = False
 
 # Have u read all. If read RESPECT :-)
