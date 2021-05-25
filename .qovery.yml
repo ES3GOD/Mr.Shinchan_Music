@@ -1,0 +1,11 @@
+---
+application:
+  name: "mr-shinchan-music"
+  project: "Mr.Shinchan_Music"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-mr-shinchan-music"
+  routes:
+  - application_name: "mr-shinchan-music"
+    paths:
+    - "/*"
