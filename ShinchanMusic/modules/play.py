@@ -626,7 +626,7 @@ async def deezer(client: Client, message_: Message):
     res = lel
     await res.edit(f"Searching 👀👀👀 for `{queryy}` on deezer")
     try:
-        songs = await arq.deezer(query,1)
+        songs = await arq.deezer(query)
         if not songs.ok:
             await message_.reply_text(songs.result)
             return
