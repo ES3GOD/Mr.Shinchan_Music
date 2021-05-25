@@ -77,11 +77,13 @@
 
 ### Deploy To Heroku</h4>
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rihan2575/Mr.Shinchan_Music)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Shinchan-Helper/Mr.Shinchan_Music)
 
 ### For String Session</h4>
 
-[![repl](https://repl.it/badge/github/rihan2575/Mr.Shinchan_Music)](https://repl.it/@SpEcHiDe/GenerateStringSession)
+[![repl](https://repl.it/badge/github/Shinchan-Helper/Mr.Shinchan_Music)](https://repl.it/@SpEcHiDe/GenerateStringSession)
+
+### Select As P For Pyrogram
 
 ### Credits
 #### Special Credits
