@@ -8,6 +8,7 @@ import aiohttp
 import ffmpeg
 import requests
 import wget
+from aiohttp import aiohttpsession
 from PIL import Image, ImageDraw, ImageFont
 from pyrogram import Client, filters
 from pyrogram.types import Voice
@@ -35,7 +36,13 @@ from ShinchanMusic.services.converter.converter import convert
 from ShinchanMusic.services.downloaders import youtube
 
 chat_id = None
-arq = ARQ("https://thearq.tech", ARQ_API_KEY)
+
+# Aiohttp Client
+print("[INFO]: INITIALZING AIOHTTP SESSION")
+aiohttpsession = ClientSession()
+# ARQ Client
+print("[INFO]: INITIALIZING ARQ CLIENT")
+arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
 
 
 def cb_admin_check(func: Callable) -> Callable:
