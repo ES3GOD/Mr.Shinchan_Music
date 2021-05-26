@@ -5,10 +5,10 @@ from typing import Callable
 
 import aiofiles
 import aiohttp
+from aiohttp import aiohttpsession
 import ffmpeg
 import requests
 import wget
-from aiohttp import aiohttpsession
 from PIL import Image, ImageDraw, ImageFont
 from pyrogram import Client, filters
 from pyrogram.types import Voice
