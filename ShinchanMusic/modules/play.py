@@ -1,5 +1,4 @@
 import json
-import asyncio
 import os
 from os import path
 from typing import Callable
@@ -505,7 +504,6 @@ async def play(_, message: Message):
             await lel.edit(
                 "Song not found.Try another song or maybe spell it properly."
             )
-            playing = False
             print(str(e))
             return
 
@@ -560,8 +558,6 @@ async def play(_, message: Message):
             ),
         )
         os.remove("final.png")
-        await asyncio.sleep(int(time_to_seconds(duration)))
-        playing = False
         await m.delete()
 
 #===========================Deezer==============================================
@@ -642,7 +638,6 @@ async def deezer(client: Client, message_: Message):
 
     except:
         await res.edit("Found Literally Nothing, You Should Work On Your English!")
-        playing = False
         return
     keyboard = InlineKeyboardMarkup(
         [
@@ -693,11 +688,8 @@ async def deezer(client: Client, message_: Message):
         caption=f"Playing [{title}]({url}) Via Deezer",
     )
     os.remove("final.png")
-    await asyncio.sleep(int(songs[0]["duration"]))
-    await m.delete()
-    playing = False
-
-#===========================Saavn===============================================
+    
+#===========================JioSaavn===============================================
 
 @Client.on_message(filters.command("splay") & filters.group & ~filters.edited)
 async def jiosaavn(client: Client, message_: Message):
@@ -774,7 +766,6 @@ async def jiosaavn(client: Client, message_: Message):
     except Exception as e:
         await res.edit("Found Literally Nothing!, You Should Work On Your English.")
         print(str(e))
-        playing = False
         return
     keyboard = InlineKeyboardMarkup(
         [
@@ -832,8 +823,5 @@ async def jiosaavn(client: Client, message_: Message):
         caption=f"Playing {sname} Via Jiosaavn",
     )
     os.remove("final.png")
-    await asyncio.sleep(int(sduration))
-    await m.delete()
-    playing = False
-
+  
 # Have u read all. If read RESPECT :-)
