@@ -5,7 +5,7 @@ from typing import Callable
 
 import aiofiles
 import aiohttp
-from aiohttp import aiohttpsession
+from aiohttp import ClientSession
 import ffmpeg
 import requests
 import wget
