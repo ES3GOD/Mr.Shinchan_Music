@@ -1,7 +1,7 @@
 from pyrogram import Client
 from pyrogram.types import ChatMemberUpdated
 
-from ShinchanMusic. import admins
+from ShinchanMusic.function import admins
 
 
 @Client.on_chat_member_updated()
