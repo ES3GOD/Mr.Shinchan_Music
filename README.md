@@ -98,9 +98,9 @@ $ npm i -g npm
 # Start Bot 
 $ python(3) -m ShinchanMusic
 
-### Credits
+#### Credits
 
-#### Special Credits
+### Special Credits
 - [Rojserbest](http://github.com/rojserbest): Callsmusic Developer
 
 This bot is based on the original work done by [Rojserbest](http://github.com/rojserbest). Without his hardwork ShinchanMusic won't exist. 
