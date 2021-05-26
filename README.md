@@ -97,7 +97,8 @@ $ pip(3) install -r requirements.txt
 $ npm i -g npm
 # Start Bot 
 $ python(3) -m ShinchanMusic
-```/sh
+
+
 #### Credits
 
 ### Special Credits
