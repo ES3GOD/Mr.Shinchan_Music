@@ -85,7 +85,21 @@
 
 ### Select As P For Pyrogram
 
+### ⚔ Self-hosting (For Devs) 
+```sh
+# Install Git First (apt-instll git)
+$ git clone https://github.com/Shinchan-Helper/Mr.Shinchan_Music.git
+$ cd Mr.Shinchan_Music
+# Upgrade sources
+# Install All Requirements 
+$ pip(3) install -r requirements.txt
+# Rename example.env to local.env and fill
+$ npm i -g npm
+# Start Bot 
+$ python(3) -m ShinchanMusic
+
 ### Credits
+
 #### Special Credits
 - [Rojserbest](http://github.com/rojserbest): Callsmusic Developer
 
@@ -103,4 +117,4 @@ ShinchanMusic is a modified version of [Callsmusic](https://github.com/callsmusi
 - [ImJanindu](https://github.com/ImJanindu): 
 - [Laky](https://github.com/Laky-64) & [Andrew](https://github.com/AndrewLaneX): PyTgCalls
 - [Original Repo owners](https://github.com/suprojects/CallsMusic)
-- [Rihan 2575](https://github.com/rihan2575)
+- [Shinchan-Helper](https://github.com/Shinchan-Helper)
