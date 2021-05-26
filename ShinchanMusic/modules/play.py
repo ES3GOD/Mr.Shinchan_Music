@@ -565,7 +565,7 @@ async def play(_, message: Message):
             ),
         )
         os.remove("final.png")
-        await m.delete()
+        return await lel.delete()
 
 #===========================Deezer==============================================
 
