@@ -7,7 +7,7 @@ if os.path.exists("local.env"):
     load_dotenv("local.env")
 
 que = {}
-SESSION_NAME = getenv("SESSION_NAME", "AQBKQRPgHvVVT9K-35hm4xB-_MNj8zAAShy6-L7jZkokWthtzHm-dvTBUat8Jv-G_Qpx2mrxjvkLDZr2gd5TRTSNbmhVhbw8d3oZq6b3-jzRHLmEGdFgPG6KM1AfnOxmJDQCOhgo7ldK6281aHIrMxED97zvFrF9AvgCRRemqvAk8qio4Getbz8mFKVyfEqe1iT5Yc4QnAwq9vZPeo_mx2Xic1z_bEnydrbBybHcNWwQt3hoifuRg2Z9-anuFrymy319ZZd4NZPNCo1-jTFtC-ivMFxzXopk9F9gG1edVjDr8yoqNkomqaYoVJiJT3tN72cRHUBfH95ricLcfNeeGD4XbrpWSwA")
+SESSION_NAME = getenv("SESSION_NAME", "AQAu-fIyAGgY2Fm-4d5cDIBrSjllxjB6wdrhTtvCjVMc4kDe0gZDE_G88H3iDdIMajwQJjMTHjQFx6FgKoVxsIP1D7ZGET8VGNZS2fsvDHqG4MxnkYjLZt_783jXcnAdL57xYjqzmiMIQj-QcxMNJ8BsbK-hJqYU6Rp8sFd8DrWvOOFV6jpJHdQGsHB69pnN4IXqcG4NIFUWfEdTECTID-2pU4ozXXciOlRCSnrRJvauZ1DEDZW405ZmERcRSTubo9nCE-2mnJIAbzYhofTw_v0ucpMfUncZ1Z-7dS1UPovQnTuf1aSJBxedmOuptkWuYk-v8vdhY7GBvCXYnZvk9b14brpWSwA")
 BOT_TOKEN = getenv("BOT_TOKEN", "1742763844:AAGh63thV8YSn8W4V2rvSzC0eamYFzlCgag")
 BOT_NAME = getenv("BOT_NAME", "Mr.Shinchan")
 UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "Shinchan_Updates")
