@@ -74,6 +74,11 @@
  4. Send /userbotjoin in Channel
  5. Simply send commands in your group.
 
+### Commands for Sudo Users ⚔️
+- `/userbotleaveall` - remove assistant from all chats
+- `/gcast <reply to message>` - globally brodcast replied message to all chats
+- `/pmpermit [on/off]` - enable/disable pmpermit message
++ Sudo Users can execute any command in any groups
 
 ### Deploy To Heroku</h4>
 
@@ -97,7 +102,7 @@ $ pip(3) install -r requirements.txt
 $ npm i -g npm
 # Start Bot 
 $ python(3) -m ShinchanMusic
-
+```
 
 #### Credits
 
