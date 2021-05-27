@@ -12,7 +12,7 @@ f"""
 ⚪️ Assistant name >> @{ASSISTANT_NAME}\n\nClick next for instructions**
 """,
 
-"""
+f"""
 **Setting up**
 
 1) Make bot admin (Group and in channel if use cplay)
@@ -44,9 +44,11 @@ f"""
 - /end: Stops media playback
 - /current: Shows the current Playing track
 - /playlist: Shows playlist
+
+*Player cmd and all other cmds except /play, /current  and /playlist  are only for admins of the group.
 """,
         
-"""
+f"""
 **=>> Channel Music Play 🛠**
 
 ⚪️ For linked group admins only:
@@ -74,12 +76,18 @@ channel is also can be used instead of c ( /cplay = /channelplay )
 5) Simply send commands in your group.
 """,
 
-"""
+f"""
 **=>> More tools 🧑‍🔧**
 
 - /admincache: Updates admin info of your group. Try if bot isn't recognize admin
 - /userbotjoin: Invite @{ASSISTANT_NAME} Userbot to your chat
 
-*Player cmd and all other cmds except /play, /current  and /playlist  are only for admins of the group.
+**=>> Commands for Sudo Users ⚔️**
+
+ - /userbotleaveall - remove assistant from all chats
+ - /gcast <reply to message> - globally brodcast replied message to all chats
+ - /pmpermit [on/off] - enable/disable pmpermit message
+*Sudo Users can execute any command in any groups
+
 """
       ]
