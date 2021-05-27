@@ -5,7 +5,6 @@ from typing import Callable
 
 import aiofiles
 import aiohttp
-from aiohttp import ClientSession
 import ffmpeg
 import requests
 import wget
@@ -35,13 +34,8 @@ from ShinchanMusic.services.callsmusic.callsmusic import client as USER
 from ShinchanMusic.services.converter.converter import convert
 from ShinchanMusic.services.downloaders import youtube
 
+aiohttpsession = aiohttp.ClientSession()
 chat_id = None
-
-# Aiohttp Client
-print("[INFO]: INITIALZING AIOHTTP SESSION")
-aiohttpsession = ClientSession()
-# ARQ Client
-print("[INFO]: INITIALIZING ARQ CLIENT")
 arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
 
 
@@ -388,7 +382,7 @@ async def m_cb(b, cb):
         else:
             await cb.answer("Chat is not connected!", show_alert=True)
 
-#==========================Youtube=============================
+# =============================Youtube============================ #
 
 @Client.on_message(command("play") & other_filters)
 async def play(_, message: Message):
@@ -449,8 +443,24 @@ async def play(_, message: Message):
         return
     message.from_user.id
     message.from_user.first_name
+    text_links=None
     await lel.edit("🔎 **Finding**")
     message.from_user.id
+    if message.reply_to_message:
+        entities = []
+        toxt = message.reply_to_message.text or message.reply_to_message.caption
+        if message.reply_to_message.entities:
+            entities = message.reply_to_message.entities + entities
+        elif message.reply_to_message.caption_entities:
+            entities = message.reply_to_message.entities + entities
+        urls = [entity for entity in entities if entity.type == 'url']
+        text_links = [
+            entity for entity in entities if entity.type == 'text_link'
+        ]
+    else:
+        urls=None
+    if text_links:
+        urls = True
     user_id = message.from_user.id
     message.from_user.first_name
     user_name = message.from_user.first_name
@@ -482,11 +492,52 @@ async def play(_, message: Message):
         views = "Locally added"
         requested_by = message.from_user.first_name
         await generate_cover(requested_by, title, views, duration, thumbnail)
-        file_path = await converter.convert(
+        file_path = await convert(
             (await message.reply_to_message.download(file_name))
             if not path.isfile(path.join("downloads", file_name))
             else file_name
         )
+    elif urls:
+        query = toxt
+        await lel.edit("🎵 **Processing**")
+        ydl_opts = {"format": "bestaudio[ext=m4a]"}
+        try:
+            results = YoutubeSearch(query, max_results=1).to_dict()
+            url = f"https://youtube.com{results[0]['url_suffix']}"
+            # print(results)
+            title = results[0]["title"][:40]
+            thumbnail = results[0]["thumbnails"][0]
+            thumb_name = f"thumb{title}.jpg"
+            thumb = requests.get(thumbnail, allow_redirects=True)
+            open(thumb_name, "wb").write(thumb.content)
+            duration = results[0]["duration"]
+            results[0]["url_suffix"]
+            views = results[0]["views"]
+
+        except Exception as e:
+            await lel.edit(
+                "Song not found.Try another song or maybe spell it properly."
+            )
+            print(str(e))
+            return
+        dlurl=url
+        dlurl=dlurl.replace("youtube","youtubepp")
+        keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
+                    InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
+                ],
+                [
+                    InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
+                    InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
+                ],
+                [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
+            ]
+        )
+        requested_by = message.from_user.first_name
+        await generate_cover(requested_by, title, views, duration, thumbnail)
+        file_path = await convert(youtube.download(url))        
     else:
         query = ""
         for i in message.command[1:]:
@@ -513,14 +564,18 @@ async def play(_, message: Message):
             )
             print(str(e))
             return
-
+        dlurl=url
+        dlurl=dlurl.replace("youtube","youtubepp")
         keyboard = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton("📖 Playlist", callback_data="playlist"),
                     InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
                 ],
-                [InlineKeyboardButton(text="Watch On YouTube 🎬", url=f"{url}")],
+                [
+                    InlineKeyboardButton(text="🎬 YouTube", url=f"{url}"),
+                    InlineKeyboardButton(text="Download 📥", url=f"{dlurl}"),
+                ],
                 [InlineKeyboardButton(text="❌ Close", callback_data="cls")],
             ]
         )
@@ -560,14 +615,14 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ **Playing** here the song requested by {} via Youtube Music 😎".format(
+            caption="▶️ **Playing** here the song requested by {} via Youtube Music 😜".format(
                 message.from_user.mention()
             ),
         )
         os.remove("final.png")
         return await lel.delete()
 
-#===========================Deezer==============================================
+# ==============================Deezer================================ #
 
 @Client.on_message(filters.command("dplay") & filters.group & ~filters.edited)
 async def deezer(client: Client, message_: Message):
@@ -633,7 +688,7 @@ async def deezer(client: Client, message_: Message):
     res = lel
     await res.edit(f"Searching 👀👀👀 for `{queryy}` on deezer")
     try:
-        songs = await arq.deezer(query, 1)
+        songs = await arq.deezer(query,1)
         if not songs.ok:
             await message_.reply_text(songs.result)
             return
@@ -641,7 +696,7 @@ async def deezer(client: Client, message_: Message):
         url = songs.result[0].url
         artist = songs.result[0].artist
         duration = songs.result[0].duration
-        thumbnail = songs.result[0].thumbnail
+        thumbnail = "https://telegra.ph/file/f6086f8909fbfeb0844f2.png"
 
     except:
         await res.edit("Found Literally Nothing, You Should Work On Your English!")
@@ -695,8 +750,8 @@ async def deezer(client: Client, message_: Message):
         caption=f"Playing [{title}]({url}) Via Deezer",
     )
     os.remove("final.png")
-    
-#===========================JioSaavn===============================================
+
+# ==============================JioSaavn=========================== #
 
 @Client.on_message(filters.command("splay") & filters.group & ~filters.edited)
 async def jiosaavn(client: Client, message_: Message):
@@ -830,5 +885,6 @@ async def jiosaavn(client: Client, message_: Message):
         caption=f"Playing {sname} Via Jiosaavn",
     )
     os.remove("final.png")
-  
+
+
 # Have u read all. If read RESPECT :-)
