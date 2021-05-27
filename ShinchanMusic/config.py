@@ -22,6 +22,8 @@ PROJECT_NAME = getenv("PROJECT_NAME", "ShinchanMusic")
 SOURCE_CODE = getenv("SOURCE_CODE", "https://github.com/Shinchan-Helper/Mr.Shinchan_Music")
 DURATION_LIMIT = int(getenv("DURATION_LIMIT", "10"))
 ARQ_API_KEY = getenv("ARQ_API_KEY", "HNFPFJ-VUHJBN-HVUSQF-SOLLKZ-ARQ")
+PMPERMIT = getenv("PMPERMIT", "ENABLE")
+LOG_GRP = getenv("LOG_GRP", "None")
 COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ !").split())
 
 SUDO_USERS = list(map(int, getenv("SUDO_USERS", "1857705547").split()))
