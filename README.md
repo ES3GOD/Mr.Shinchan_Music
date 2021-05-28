@@ -21,7 +21,29 @@
 - Userbot auto join
 - Channel Music Play
 
+### Deploy To Heroku</h4>
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Shinchan-Helper/Mr.Shinchan_Music)
+
+### For String Session</h4>
+
+[![repl](https://repl.it/badge/github/Shinchan-Helper/Mr.Shinchan_Music)](https://repl.it/@SpEcHiDe/GenerateStringSession)
+
+### Select As P For Pyrogram
+
+### ⚔ Self-hosting (For Devs) 
+```sh
+# Install Git First (apt-instll git)
+$ git clone https://github.com/Shinchan-Helper/Mr.Shinchan_Music.git
+$ cd Mr.Shinchan_Music
+# Upgrade sources
+# Install All Requirements 
+$ pip(3) install -r requirements.txt
+# Rename example.env to local.env and fill
+$ npm i -g npm
+# Start Bot 
+$ python(3) -m ShinchanMusic
+```
 ### Commands For Group 🛠
 
 #### For all in group
@@ -80,31 +102,11 @@
 - `/pmpermit [on/off]` - enable/disable pmpermit message
 + Sudo Users can execute any command in any groups
 
-### Deploy To Heroku</h4>
+#### Pmpermit
+- `.a` - approove someone to pm you
+- `.da` - disapproove someone to pm you
++ Sudo Users can execute any command in any groups
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Shinchan-Helper/Mr.Shinchan_Music)
-
-### For String Session</h4>
-
-[![repl](https://repl.it/badge/github/Shinchan-Helper/Mr.Shinchan_Music)](https://repl.it/@SpEcHiDe/GenerateStringSession)
-
-### Select As P For Pyrogram
-
-### ⚔ Self-hosting (For Devs) 
-```sh
-# Install Git First (apt-instll git)
-$ git clone https://github.com/Shinchan-Helper/Mr.Shinchan_Music.git
-$ cd Mr.Shinchan_Music
-# Upgrade sources
-# Install All Requirements 
-$ pip(3) install -r requirements.txt
-# Rename example.env to local.env and fill
-$ npm i -g npm
-# Start Bot 
-$ python(3) -m ShinchanMusic
-```
-
-#### Credits
 
 ### Special Credits
 - [Rojserbest](http://github.com/rojserbest): Callsmusic Developer
