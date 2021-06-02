@@ -2,7 +2,7 @@
 
 ### A bot that can play music on telegram group's voice call
 #### BASED ON [PYTGCALLS](https://github.com/pytgcalls/pytgcalls)
-# Available on telegram as @ShinchanHelper_Bot
+## Available on telegram as [@ShinchanHelper_Bot](https://t.me/ShinchanHelper_Bot)
 
 <p align="center">
   <img src="https://telegra.ph/file/56e5d3922d423cfb23871.jpg">
