@@ -3,6 +3,8 @@ application:
   name: "mr-shinchan-music"
   project: "ShinchanHelper"
   organization: "QoveryCommunity"
+  cpu: "2"
+  ram: "4GB"
   storage:
   - name: "Shinchan-Helper"
     size: "200"
