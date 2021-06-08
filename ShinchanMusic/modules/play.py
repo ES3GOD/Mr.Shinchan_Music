@@ -29,7 +29,8 @@ from ShinchanMusic.helpers.decorators import errors
 from ShinchanMusic.helpers.decorators import authorized_users_only
 from ShinchanMusic.helpers.filters import command, other_filters
 from ShinchanMusic.helpers.gets import get_file_name
-from ShinchanMusic.services.callsmusic import callsmusic, queues
+from ShinchanMusic.services.callsmusic import callsmusic
+from ShinchanMusic.services.queues import queues
 from ShinchanMusic.services.callsmusic.callsmusic import client as USER
 from ShinchanMusic.services.converter.converter import convert
 from ShinchanMusic.services.downloaders import youtube
