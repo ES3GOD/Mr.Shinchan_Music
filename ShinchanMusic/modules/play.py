@@ -577,6 +577,7 @@ async def play(_, message: Message):
                     InlineKeyboardButton("7️⃣", callback_data=f'plll 6|{query}'),
                     InlineKeyboardButton("8️⃣", callback_data=f'plll 7|{query}'),
                     InlineKeyboardButton("9️⃣", callback_data=f'plll 8|{query}'),
+                ],
                 [InlineKeyboardButton(text="❌", callback_data="cls")],
             ]
         )       
