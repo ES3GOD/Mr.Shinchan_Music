@@ -560,7 +560,7 @@ async def play(_, message: Message):
             toxxt += f"   Views - {results[j]['views']}\n"
             toxxt += f"   Channel - {results[j]['channel']}\n\n"
             
-            j += 1            
+            j += 1️⃣            
         koyboard = InlineKeyboardMarkup(
             [
                 [
