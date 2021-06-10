@@ -555,7 +555,7 @@ async def play(_, message: Message):
         j = 0
         useer=user_name
         while j < 9:
-            toxxt += f"{j+1️⃣} [Title - {results[j]['title']}](https://youtube.com{results[j]['url_suffix']})\n"
+            toxxt += f"{j+1} [Title - {results[j]['title']}](https://youtube.com{results[j]['url_suffix']})\n"
             toxxt += f"   Duration - {results[j]['duration']}\n"
             toxxt += f"   Views - {results[j]['views']}\n"
             toxxt += f"   Channel - {results[j]['channel']}\n\n"
