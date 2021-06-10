@@ -34,7 +34,7 @@ async def addchannel(client, message):
         print(e)
         await message.reply_text(
             f"<b>🛑 Flood Wait Error 🛑 \n User {user.first_name} couldn't join your group due to heavy join requests for userbot! Make sure user is not banned in group."
-            "\n\nOr manually add to your Group and try again</b>",
+            "\n\nOr manually add @Shinchan_Helper to your Group and try again</b>",
         )
         return
     await message.reply_text(
@@ -59,8 +59,8 @@ async def bye(client, message):
     if message.from_user.id in SUDO_USERS:
         left=0
         failed=0
-        await message.reply("Assistant Leaving all chats")
-        for dialog in USER.iter_dialogs():
+        lol = await message.reply("Assistant Leaving all chats")
+        async for dialog in USER.iter_dialogs():
             try:
                 await USER.leave_chat(dialog.chat.id)
                 left = left+1
@@ -109,10 +109,9 @@ async def addcchannel(client, message):
         print(e)
         await message.reply_text(
             f"<b>🛑 Flood Wait Error 🛑 \n User {user.first_name} couldn't join your channel due to heavy join requests for userbot! Make sure user is not banned in channel."
-            "\n\nOr manually add to your Group and try again</b>",
+            "\n\nOr manually add @Shinchan_Helper to your Group and try again</b>",
         )
         return
     await message.reply_text(
         "<b>helper userbot joined your channel</b>",
     )
-    
