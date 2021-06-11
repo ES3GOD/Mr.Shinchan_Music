@@ -52,6 +52,7 @@ $ python(3) -m ShinchanMusic
 - `/play <reply to audio>` - play replied file
 - `/dplay <song name>` - play song you requested via deezer
 - `/splay <song name>` - play song you requested via jio saavn
+- `/ytplay <song name>`: Directly play song via Youtube Music
 - `/playlist` - Show now playing list
 - `/current` - Show now playing
 - `/song <song name>` - download songs you want quickly
@@ -69,6 +70,7 @@ $ python(3) -m ShinchanMusic
 - `/userbotjoin` - invite assistant to your chat
 - `/userbotleave` - remove assistant from your chat
 - `/admincache` - Refresh admin list
+- `/musicplayer [on/off]` - Enable/Disable Music Player
 
 ### Commands For Channel Music Play 🛠
 
