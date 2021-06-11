@@ -582,7 +582,6 @@ async def play(_, message: Message):
                 [InlineKeyboardButton(text="❌", callback_data="cls")],
             ]
         )  
-        await lel.delete() 
         await message.reply_photo(
         photo='https://telegra.ph/file/6ed0b954aa89333f4a3e4.jpg', 
         caption=(toxxt),    
