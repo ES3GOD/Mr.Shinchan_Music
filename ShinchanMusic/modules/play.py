@@ -554,11 +554,12 @@ async def play(_, message: Message):
         toxxt = ""
         j = 0
         useer=user_name
+        mystic = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣",]
         while j < 9:
-            toxxt += f"{j+1}) [Title - {results[j]['title']}](https://youtube.com{results[j]['url_suffix']})\n"
-            toxxt += f"   Duration - {results[j]['duration']}\n"
-            toxxt += f"   Views - {results[j]['views']}\n"
-            toxxt += f"   Channel - {results[j]['channel']}\n\n"
+            toxxt += f"{mystic[j]} <b>Title - [{results[j]['title']}](https://youtube.com{results[j]['url_suffix']})</b>\n"
+            toxxt += f"   ╚<b>Duration:</b> {results[j]['duration']}\n"
+            toxxt += f"   ╚<b>Views:</b> {results[j]['views']}\n"
+            toxxt += f"   ╚<b>Channel:</b> {results[j]['channel']}\n\n"
             
             j += 1            
         koyboard = InlineKeyboardMarkup(
@@ -580,11 +581,15 @@ async def play(_, message: Message):
                 ],
                 [InlineKeyboardButton(text="❌", callback_data="cls")],
             ]
+        )  
+        await lel.delete() 
+        await message.reply_photo(
+        photo='https://telegra.ph/file/6ed0b954aa89333f4a3e4.jpg', 
+        caption=(toxxt),    
+        reply_markup=koyboard,
         )       
-        await lel.edit(toxxt,reply_markup=koyboard,disable_web_page_preview=True)
-        # WHY PEOPLE ALWAYS LOVE PORN ?? (A point to think)
+        disable_web_page_preview=True
         return
-        # Returning to pornhub
 
     chat_id = get_chat_id(message.chat)
     if chat_id in callsmusic.pytgcalls.active_calls:
