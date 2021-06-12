@@ -1,1 +1,3 @@
-from ShinchanMusic.services.downloaders.youtube import download
+from ShinchanMusic.services import youtube
+
+__all__ = ['youtube']
