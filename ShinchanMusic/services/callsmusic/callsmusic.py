@@ -1,8 +1,9 @@
 from typing import Dict
 
+from pyrogram import client
 from pytgcalls import GroupCall
 
-from ShinchanMusic import client
+from ShinchanMusic.config import API_HASH, API_ID, SESSION_NAME
 from ShinchanMusic.services.queues import queues
 
 instances: Dict[int, GroupCall] = {}
