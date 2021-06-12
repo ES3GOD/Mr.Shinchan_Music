@@ -20,6 +20,7 @@
 - Control with buttons
 - Userbot auto join
 - Channel Music Play
+- Keyword selection support for youtube play
 
 ### Deploy To Heroku</h4>
 
