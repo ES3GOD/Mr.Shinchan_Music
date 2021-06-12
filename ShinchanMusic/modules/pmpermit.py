@@ -2,7 +2,7 @@ from pyrogram import Client
 import asyncio
 from ShinchanMusic.config import SUDO_USERS, PMPERMIT
 from pyrogram import filters
-from pyrogram import Message
+from pyrogram import message
 from ShinchanMusic.services.callsmusic.callsmusic import client as USER
 
 PMSET =True
