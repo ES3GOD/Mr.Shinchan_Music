@@ -1,6 +1,8 @@
 from pyrogram import Client
 
 from ShinchanMusic import config
+from ShinchanMusic.services.callsmusic.callsmusic import pytgcalls, run
+from ShinchanMusic.services.queues import queues
 
-client = Client(config.SESSION_NAME, config.API_ID, config.API_HASH)
+client = Client(SESSION_NAME, API_ID, API_HASH)
 run = client.run
