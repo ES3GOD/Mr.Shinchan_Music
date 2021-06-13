@@ -1,6 +1,6 @@
 from typing import Dict
 
-from pyrogram import client
+from pyrogram import Client
 from pytgcalls import GroupCall
 
 from ShinchanMusic.config import API_HASH, API_ID, SESSION_NAME
